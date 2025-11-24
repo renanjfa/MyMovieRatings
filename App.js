@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ScrollView, TextInput } from 'react-native-web';
+import SearchMovies from './SearchMovies';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Tab = createBottomTabNavigator();
+
+export default class App extends Component {
+  
+  render() {
+
+    return (
+      <NavigationContainer>
+        <Tab.Navigator>
+
+          <Tab.Screen name="Search">
+            {() => <SearchMovies/>}
+          </Tab.Screen>
+
+          <Tab.Screen name="Watchlist">
+            {() => (
+              <View style={{ padding: 20 }}>
+                <Text>App de Filmes usando TMDB</Text>
+              </View>
+            )}
+          </Tab.Screen>
+          
+          <Tab.Screen name="Ratings">
+            {() => (
+              <View style={{ padding: 20 }}>
+                <Text>App de Filmes usando TMDB</Text>
+              </View>
+            )}
+          </Tab.Screen>
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
