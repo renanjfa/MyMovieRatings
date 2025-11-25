@@ -13,13 +13,18 @@ class SearchMovies extends Component {
                 <Stack.Screen
                     name="MovieNavScreen"
                     options={{ headerShown: false }}
-                    children={(props) => <MovieNavScreen {...props} />}
+                    children={(props) => <MovieNavScreen {...props} ratedMovies={this.props.ratedMovies} />}
                 />
 
-                <Stack.Screen
-                    name="MovieDetails"
-                    children={(props) => <MovieDetails {...props} />}
-                />
+                <Stack.Screen name="MovieDetails">
+                    {(props) => (
+                        <MovieDetails
+                        {...props}
+                        ratedMovies={this.props.ratedMovies}
+                        isOnRateMovie={this.props.isOnRateMovie}
+                        />
+                    )}
+                </Stack.Screen>
 
             </Stack.Navigator>
         );
