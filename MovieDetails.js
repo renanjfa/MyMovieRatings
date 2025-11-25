@@ -16,6 +16,13 @@ class MovieDetails extends Component {
                 <Text>
                     {filme.title}
                 </Text>
+                <Text>
+                    {"Average Score: " + filme.vote_average}
+                </Text>
+                <Text>
+                    {"Release Date: " + filme.release_date}
+                    
+                </Text>
             </View>
         );
     }
