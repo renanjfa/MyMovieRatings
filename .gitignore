@@ -3,7 +3,8 @@
 # dependencies
 node_modules/
 
-
+# notes.txt
+notes.txt
 
 # Expo
 .expo/
