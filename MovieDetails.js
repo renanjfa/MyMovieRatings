@@ -27,6 +27,12 @@ class MovieDetails extends Component {
         this.props.isOnRateMovie(filme, nota);
     }
 
+    removerRatedMovie() {
+        const { filme } = this.props.route.params;
+        const { ratedMovies } = this.props;
+        this.props.removeRatedMovie(filme.id);
+    }
+
     render() {
         const { filme } = this.props.route.params;
     
@@ -56,6 +62,8 @@ class MovieDetails extends Component {
                 <Button title="Dar nota 3" onPress={() => this.setRating(3)} />
                 <Button title="Dar nota 4" onPress={() => this.setRating(4)} />
                 <Button title="Dar nota 5" onPress={() => this.setRating(5)} />
+
+                <Button title="Excluir Avaliacao" onPress={() => {this.removerRatedMovie(); this.props.navigation.goBack()}}/>
             </View>
         );
     }

@@ -39,6 +39,12 @@ export default class App extends Component {
     this.saveRatedMovies(updated);
   };
 
+  removeRatedMovie = (movieId) => {
+    const updated = this.state.ratedMovies.filter(m => m.id !== movieId);
+    this.setState({ ratedMovies: updated });
+    this.saveRatedMovies(updated);
+  };
+
   render() {
 
     return (
@@ -60,7 +66,14 @@ export default class App extends Component {
           </Tab.Screen>
           
           <Tab.Screen name="Ratings">
-            {() => <RatedMovies/>}
+            {(props) => (
+              <RatedMovies 
+                {...props}
+                ratedMovies={this.state.ratedMovies}
+                isOnRateMovie={this.isOnRateMovie}
+                removeRatedMovie={this.removeRatedMovie}
+              />
+            )}
           </Tab.Screen>
 
         </Tab.Navigator>
