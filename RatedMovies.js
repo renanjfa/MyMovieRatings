@@ -3,24 +3,29 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RatedNavScreen from './RatedNavScreen';
 import MovieDetails from './MovieDetails';
 
-const Stack = createStackNavigator();
+const Ratings = createStackNavigator();
 
 class RatedMovies extends Component {
 
     render() {
         return(
-            <Stack.Navigator>
+            <Ratings.Navigator>
 
-                <Stack.Screen name="RatedNavScreen" options={{ headerShown: false }}>
+                <Ratings.Screen name="RatedNavScreen" options={{ headerShown: false }}>
                     {(props) => (
                         <RatedNavScreen
                         {...props}
                         ratedMovies={this.props.ratedMovies}
+                        isOnRateMovie={this.props.isOnRateMovie}
+                        removeRatedMovie={this.props.removeRatedMovie}
+                        watchlist={this.props.watchlist}
+                        isOnWatchlist={this.props.isOnWatchlist}
+                        removeWatchlist={this.props.removeWatchlist}
                         />
                     )}
-                </Stack.Screen>
+                </Ratings.Screen>
 
-                <Stack.Screen name="MovieDetails">
+                <Ratings.Screen name="MovieDetails">
                     {(props) => (
                         <MovieDetails
                         {...props}
@@ -29,9 +34,9 @@ class RatedMovies extends Component {
                         removeRatedMovie={this.props.removeRatedMovie}
                         />
                     )}
-                </Stack.Screen>
+                </Ratings.Screen>
 
-            </Stack.Navigator>
+            </Ratings.Navigator>
         );
     }
 

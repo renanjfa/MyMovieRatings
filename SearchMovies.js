@@ -10,11 +10,19 @@ class SearchMovies extends Component {
         return (
             <Stack.Navigator>
 
-                <Stack.Screen
-                    name="MovieNavScreen"
-                    options={{ headerShown: false }}
-                    children={(props) => <MovieNavScreen {...props} ratedMovies={this.props.ratedMovies} />}
-                />
+                <Stack.Screen name="MovieNavScreen" options={{ headerShown: false }}>
+                    {(props) => (
+                        <MovieNavScreen
+                        {...props}
+                        ratedMovies={this.props.ratedMovies}
+                        isOnRateMovie={this.props.isOnRateMovie}
+                        removeRatedMovie={this.props.removeRatedMovie}
+                        watchlist={this.props.watchlist}
+                        isOnWatchlist={this.props.isOnWatchlist}
+                        removeWatchlist={this.props.removeWatchlist}
+                        />
+                    )}
+                </Stack.Screen>
 
                 <Stack.Screen name="MovieDetails">
                     {(props) => (
@@ -22,6 +30,10 @@ class SearchMovies extends Component {
                         {...props}
                         ratedMovies={this.props.ratedMovies}
                         isOnRateMovie={this.props.isOnRateMovie}
+                        removeRatedMovie={this.props.removeRatedMovie}
+                        watchlist={this.props.watchlist}
+                        isOnWatchlist={this.props.isOnWatchlist}
+                        removeWatchlist={this.props.removeWatchlist}
                         />
                     )}
                 </Stack.Screen>
