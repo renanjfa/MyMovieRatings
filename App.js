@@ -50,26 +50,26 @@ export default class App extends Component {
     this.saveRatedMovies(updated);
   };
 
-  // isOnWatchlist = (movie) => {
-  //   const updated = [...this.state.watchlist, { ...movie }];
-  //       this.setState({ watchlist: updated });
-  //       this.saveWatchlist(updated);
-  // };
-
   isOnWatchlist = (movie) => {
-    // Verifica se o filme já está na watchlist
-    const alreadyInWatchlist = this.state.watchlist.some(m => m.id === movie.id);
-    
-    if (!alreadyInWatchlist) {
-        // Se não está, adiciona o filme
-        const updated = [...this.state.watchlist, { ...movie }];
+    const updated = [...this.state.watchlist, { ...movie }];
         this.setState({ watchlist: updated });
         this.saveWatchlist(updated);
-        console.log('Filme adicionado à watchlist:', movie.title); // Debug
-    } else {
-        console.log('Filme já está na watchlist:', movie.title); // Debug
-    }
-};
+  };
+
+//   isOnWatchlist = (movie) => {
+//     // Verifica se o filme já está na watchlist
+//     const alreadyInWatchlist = this.state.watchlist.some(m => m.id === movie.id);
+    
+//     if (!alreadyInWatchlist) {
+//         // Se não está, adiciona o filme
+//         const updated = [...this.state.watchlist, { ...movie }];
+//         this.setState({ watchlist: updated });
+//         this.saveWatchlist(updated);
+//         console.log('Filme adicionado à watchlist:', movie.title); // Debug
+//     } else {
+//         console.log('Filme já está na watchlist:', movie.title); // Debug
+//     }
+// };
 
   removeRatedMovie = (movieId) => { 
     const updated = this.state.ratedMovies.filter(m => m.id !== movieId);

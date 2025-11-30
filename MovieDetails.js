@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Text, View, Image, Button} from 'react-native';
-import { ScrollView } from 'react-native-web';
+import {Text, View, Image, Button, TouchableOpacity, Dimensions, StyleSheet} from 'react-native';
+import StarButton from './StarButton';
 
 class MovieDetails extends Component {
 
@@ -58,60 +58,130 @@ class MovieDetails extends Component {
 
     render() {
         const { filme } = this.props.route.params;
-    
+
         return (
-            <View>
+            <View style={styles.container}>
+                
+                {/* Poster */}
                 <Image
                     source={{ uri: "https://image.tmdb.org/t/p/w500" + filme.poster_path }}
-                    style={{ width: 120, height: 220, borderRadius: 10, margin: 10 }}
+                    style={styles.poster}
                 />
-                <Text>
-                    {filme.title}
-                </Text>
-                <Text>
-                    {"Overview: " + filme.overview}
-                </Text>
-                <Text>
-                    {"Average Score: " + filme.vote_average}
-                </Text>
-                <Text>
-                    {"Release Date: " + filme.release_date}
 
-                </Text>
+                {/* Conteúdo */}
+                <View style={styles.infoContainer}>
 
-                
+                    <Text style={styles.title}>{filme.title}</Text>
+                    <Text style={styles.overview}>{filme.overview}</Text>
 
-                <Text>Nota atual: {this.state.rating || "Nenhuma"}</Text>
+                    <Text style={styles.detail}>⭐ Average Score: {filme.vote_average}</Text>
+                    <Text style={styles.detail}>📅 Release Date: {filme.release_date}</Text>
+                    <Text style={styles.detail}>🎯 Your Rating: {this.state.rating || "Nenhuma"}</Text>
 
-            <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "center" }}>
+                    {/* Rating */}
+                    <View style={styles.ratingRow}>
+                        <Text style={styles.ratingLabel}>Your Rating:</Text>
 
-                <Text>Your Rating: </Text>
-                <Button title="1" onPress={() => this.setRating(1)} />
-                <Button title="2" onPress={() => this.setRating(2)} />
-                <Button title="3" onPress={() => this.setRating(3)} />
-                <Button title="4" onPress={() => this.setRating(4)} />
-                <Button title="5" onPress={() => this.setRating(5)} />
-                <Button title="6" onPress={() => this.setRating(6)} />
-                <Button title="7" onPress={() => this.setRating(7)} />
-                <Button title="8" onPress={() => this.setRating(8)} />
-                <Button title="9" onPress={() => this.setRating(9)} />
-                <Button title="10" onPress={() => this.setRating(10)} />
+                        {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                            <StarButton 
+                                key={num} 
+                                value={num} 
+                                onPress={(v) => this.setRating(v)}
+                            />
+                        ))}
+                    </View>
 
+                    {/* Botões */}
+                    <View style={styles.buttonsArea}>
 
-            </View>
-            <View style={{flexDirection: "column", flexWrap: "wrap", justifyContent: "flex-start"}}>
-                {this.state.rating ? (
-                    <Button title="Excluir Avaliacao" onPress={() => {this.removerRatedMovie(); this.props.navigation.goBack()}}/>
-                ) : (
-                    <Text></Text>
-                )}
-                <Button title="Add To Watchlist" onPress={() => this.addToWatchlist()}/>
-                <Button title="Retirar Watchlist" onPress={() => this.removerWatchlist()}/>
-            </View>
+                        {this.state.rating ? (
+                            <Button
+                                title="Excluir Avaliação"
+                                color="#FF4444"
+                                onPress={() => {
+                                    this.removerRatedMovie();
+                                    this.props.navigation.goBack();
+                                }}
+                            />
+                        ) : null}
+
+                        <View style={{ marginVertical: 6 }}>
+                            <Button
+                                title="Add to Watchlist"
+                                onPress={() => this.addToWatchlist()}
+                            />
+                        </View>
+
+                        <Button
+                            title="Retirar da Watchlist"
+                            color="#4444FF"
+                            onPress={() => this.removerWatchlist()}
+                        />
+                    </View>
+
+                </View>
             </View>
         );
     }
 
 }
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        padding: 12,
+        backgroundColor: "#121212",
+        flex: 1,
+    },
+
+    poster: {
+        width: 450,
+        height: 630,
+        borderRadius: 12,
+        marginRight: 16,
+    },
+
+    infoContainer: {
+        flex: 1,
+        flexDirection: "column",
+    },
+
+    title: {
+        fontSize: 26,
+        fontWeight: "bold",
+        color: "white",
+        marginBottom: 10,
+    },
+
+    overview: {
+        fontSize: 16,
+        color: "#CCCCCC",
+        marginBottom: 16,
+    },
+
+    detail: {
+        fontSize: 16,
+        color: "#AAAAAA",
+        marginBottom: 6,
+    },
+
+    ratingRow: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignItems: "center",
+        marginTop: 10,
+        marginBottom: 20,
+    },
+
+    ratingLabel: {
+        color: "white",
+        fontSize: 16,
+        marginRight: 10,
+    },
+
+    buttonsArea: {
+        marginTop: 20,
+    }
+});
+
 
 export default MovieDetails;

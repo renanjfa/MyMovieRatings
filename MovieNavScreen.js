@@ -60,6 +60,9 @@ class MovieNavScreen extends Component {
         });
     };
 
+
+    
+
     render() {
         const { filmes, loading, busca } = this.state;
         const { navigation } = this.props;
@@ -78,12 +81,22 @@ class MovieNavScreen extends Component {
                 {loading ? (
                     <Text>Carregando...</Text>
                 ) : (
+                    
                     filmes.map((filme, index) => (
                         <TouchableHighlight key={index} onPress={() => navigation.navigate("MovieDetails", { filme })}>
-                            <Image
-                                source={{ uri: "https://image.tmdb.org/t/p/w500" + filme.poster_path }}
-                                style={{ width: 120, height: 220, borderRadius: 10, margin: 10 }}
-                            />
+                            {filme.poster_path ? (
+
+                                <Image
+                                    source={{ uri: "https://image.tmdb.org/t/p/w500" + filme.poster_path }}
+                                    style={{ width: 120, height: 220, borderRadius: 10, margin: 10 }}
+                                />
+                            ) : (
+                                <View style={{ width: 120, height: 220, margin: 10 , alignItems: "center", justifyContent: "center"}}>
+                                    <Text>Sem Poster</Text>
+                                </View>
+                            )
+                            }
+                            
                         </TouchableHighlight>
                     ))
                 )}
