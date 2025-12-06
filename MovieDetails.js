@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, Button, StyleSheet} from 'react-native';
+import {Text, View, Image, TouchableOpacity, Button, StyleSheet} from 'react-native';
 import StarButton from './StarButton';
 
 class MovieDetails extends Component {
@@ -101,16 +101,19 @@ class MovieDetails extends Component {
                        
 
                         {this.alreadyInWatchlist() ? (
-                            <Button
-                            title="Retirar da Watchlist"
-                            color="#4444FF"
-                            onPress={() => this.removerWatchlist()}
-                            />
+                            <TouchableOpacity 
+                                style={[styles.customButton, { backgroundColor: "#4444FF" }]}
+                                onPress={() => this.removerWatchlist()}
+                            >
+                                <Text style={styles.customButtonText}>Remove From Watchlist</Text>
+                            </TouchableOpacity>
                         ) : (
-                            <Button
-                                title="Add to Watchlist"
+                            <TouchableOpacity 
+                                style={[styles.customButton, { backgroundColor: "#5c5ceaff" }]}
                                 onPress={() => this.addToWatchlist()}
-                            />
+                            >
+                                <Text style={styles.customButtonText}>Add To Watchlist</Text>
+                            </TouchableOpacity>
                         )}
                         
                     </View>
@@ -176,7 +179,22 @@ const styles = StyleSheet.create({
 
     buttonsArea: {
         marginTop: 20,
-    }
+    },
+    customButton: {
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        height: 40,
+        borderRadius: 10,
+        marginTop: 10,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    customButtonText: {
+        color: "white",
+        fontSize: 16,
+        fontWeight: "600",
+    },
 });
 
 

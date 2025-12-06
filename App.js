@@ -72,9 +72,16 @@ export default class App extends Component {
 
     return (
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{
+          tabBarStyle: {
+            backgroundColor: "#877d2fff",  
+            borderTopColor: "transparent", 
+          },
+          tabBarActiveTintColor: "#000000ff",  
+          tabBarInactiveTintColor: "#4f4a4aff",
+        }}>
 
-          <Tab.Screen name="Search">
+          <Tab.Screen name="Search" options={{ headerShown: false }}>
             {(props) => (
               <SearchMovies 
                 {...props}
@@ -88,7 +95,7 @@ export default class App extends Component {
             )}
           </Tab.Screen>
 
-          <Tab.Screen name="Watchlist">
+          <Tab.Screen name="Watchlist" options={{ headerShown: false }}>
             {(props) => (
               <Watchlist 
                 {...props}
@@ -102,7 +109,7 @@ export default class App extends Component {
             )}
           </Tab.Screen>
           
-          <Tab.Screen name="Ratings">
+          <Tab.Screen name="Ratings" options={{ headerShown: false }}>
             {(props) => (
               <RatedMovies 
                 {...props}

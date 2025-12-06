@@ -118,8 +118,10 @@ const styles = StyleSheet.create({
     input: {
         marginTop: 5,
         marginBottom: 10,
+        marginLeft: 70,
+        marginRight: 70,
         padding: 10,
-        backgroundColor: '#eee',
+        backgroundColor: '#9b9250b7',
         borderRadius: 8,
         marginHorizontal: 20
     },

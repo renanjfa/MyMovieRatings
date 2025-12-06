@@ -25,7 +25,7 @@ class RatedMovies extends Component {
                     )}
                 </Ratings.Screen>
 
-                <Ratings.Screen name="MovieDetails">
+                <Ratings.Screen name="MovieDetails" options={{ headerShown: false }}>
                     {(props) => (
                         <MovieDetails
                         {...props}
