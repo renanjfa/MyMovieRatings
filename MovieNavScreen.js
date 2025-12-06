@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, TouchableHighlight, ScrollView, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StyleSheet} from 'react-native';
 
 const API_KEY = "0672663f6a6265905425d77f1c69a75f";
 
@@ -68,8 +68,9 @@ class MovieNavScreen extends Component {
         const { navigation } = this.props;
 
         return (
-            
-            <ScrollView>
+            <View style={styles.container}>
+                <Text style={styles.header}>Search For Movies</Text>
+
                 <TextInput
                     placeholder='Search'
                     onChangeText={this.onChangeText}
@@ -77,43 +78,97 @@ class MovieNavScreen extends Component {
                     value={busca}
                 />
 
-                <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "center" }}>
-                {loading ? (
-                    <Text>Carregando...</Text>
-                ) : (
-                    
-                    filmes.map((filme, index) => (
-                        <TouchableHighlight key={index} onPress={() => navigation.navigate("MovieDetails", { filme })}>
-                            {filme.poster_path ? (
+                <ScrollView contentContainerStyle={styles.scroll}>
 
-                                <Image
-                                    source={{ uri: "https://image.tmdb.org/t/p/w500" + filme.poster_path }}
-                                    style={{ width: 120, height: 220, borderRadius: 10, margin: 10 }}
-                                />
-                            ) : (
-                                <View style={{ width: 120, height: 220, margin: 10 , alignItems: "center", justifyContent: "center"}}>
-                                    <Text>Sem Poster</Text>
-                                </View>
-                            )
-                            }
-                            
-                        </TouchableHighlight>
-                    ))
-                )}
+                    <View style={styles.grid}>
+                    {loading ? (
+                        <Text>Carregando...</Text>
+                    ) : (
+                        
+                        filmes.map((filme, index) => (
+                            <TouchableOpacity key={index} style={styles.card} activeOpacity={0.8} onPress={() => navigation.navigate("MovieDetails", { filme })}>
+                                {filme.poster_path ? (
+
+                                    <Image
+                                        source={{ uri: "https://image.tmdb.org/t/p/w500" + filme.poster_path }}
+                                        style={styles.poster}
+                                    />
+                                ) : (
+                                    <View style={{ width: 150, height: 230, margin: 10 , alignItems: "center", justifyContent: "center", backgroundColor: "#7e7373ff", borderRadius: 8}}>
+                                        <Text style={{color:"white", fontWeight: "bold"}}>Sem Poster</Text>
+                                    </View>
+                                )}
+                                <Text numberOfLines={2} style={styles.title}>
+                                    {filme.title}
+                                </Text>
+                                
+                            </TouchableOpacity>
+                        ))
+                    )}
+                    </View>
+                </ScrollView>
             </View>
-            </ScrollView>
         );
     }
 }
 
+export default MovieNavScreen;
+
 const styles = StyleSheet.create({
     input: {
-        marginTop: 20,
+        marginTop: 5,
+        marginBottom: 10,
         padding: 10,
         backgroundColor: '#eee',
         borderRadius: 8,
         marginHorizontal: 20
-    }
-});
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#0D0D0D",
+        paddingTop: 20,
+    },
 
-export default MovieNavScreen;
+    header: {
+        color: "#837718ff",
+        fontSize: 26,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginBottom: 15,
+    },
+
+    scroll: {
+        paddingBottom: 50,
+    },
+
+    grid: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+    },
+
+    card: {
+        width: 150,
+        margin: 10,
+        alignItems: "center",
+    },
+
+    poster: {
+        width: 150,
+        height: 240,
+        borderRadius: 12,
+        marginBottom: 8,
+        backgroundColor: "#222",
+        elevation: 6,
+    },
+
+    title: {
+        color: "white",
+        fontSize: 14,
+        textAlign: "center",
+        fontWeight: "bold",
+        marginTop: 4,
+        paddingHorizontal: 4,
+    },
+
+});

@@ -32,6 +32,9 @@ class RatedMovies extends Component {
                         ratedMovies={this.props.ratedMovies}
                         isOnRateMovie={this.props.isOnRateMovie}
                         removeRatedMovie={this.props.removeRatedMovie}
+                        watchlist={this.props.watchlist}
+                        isOnWatchlist={this.props.isOnWatchlist}
+                        removeWatchlist={this.props.removeWatchlist}
                         />
                     )}
                 </Ratings.Screen>

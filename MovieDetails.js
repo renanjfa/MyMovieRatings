@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, Button, TouchableOpacity, Dimensions, StyleSheet} from 'react-native';
+import {Text, View, Image, Button, StyleSheet} from 'react-native';
 import StarButton from './StarButton';
 
 class MovieDetails extends Component {
@@ -28,22 +28,11 @@ class MovieDetails extends Component {
         this.props.isOnRateMovie(filme, nota);
     }
 
-    // addToWatchlist = () => {
-    //     const { filme } = this.props.route.params;
-    //     this.props.isOnWatchlist(filme);
-    // }
-
     addToWatchlist = () => {
         const { filme } = this.props.route.params;
-        
-        // Verifica se a função existe
-        if (this.props.isOnWatchlist) {
-            this.props.isOnWatchlist(filme);
-            console.log('Tentando adicionar à watchlist:', filme.title); // Debug
-        } else {
-            console.error('isOnWatchlist não está disponível nas props');
-        }
-    };
+        this.props.isOnWatchlist(filme);
+    }
+
 
     removerRatedMovie = () => {
         const { filme } = this.props.route.params;
@@ -54,6 +43,13 @@ class MovieDetails extends Component {
     removerWatchlist = () => {
         const { filme } = this.props.route.params;
         this.props.removeWatchlist(filme.id);
+    }
+
+    alreadyInWatchlist() {
+        const { filme } = this.props.route.params;
+        const {watchlist} = this.props;
+        const f = watchlist.find(m => m.id === filme.id);
+        return f ? true : false;
     }
 
     render() {
@@ -98,25 +94,25 @@ class MovieDetails extends Component {
                             <Button
                                 title="Excluir Avaliação"
                                 color="#FF4444"
-                                onPress={() => {
-                                    this.removerRatedMovie();
-                                    this.props.navigation.goBack();
-                                }}
+                                onPress={() => this.removerRatedMovie()}
                             />
                         ) : null}
 
-                        <View style={{ marginVertical: 6 }}>
+                       
+
+                        {this.alreadyInWatchlist() ? (
+                            <Button
+                            title="Retirar da Watchlist"
+                            color="#4444FF"
+                            onPress={() => this.removerWatchlist()}
+                            />
+                        ) : (
                             <Button
                                 title="Add to Watchlist"
                                 onPress={() => this.addToWatchlist()}
                             />
-                        </View>
-
-                        <Button
-                            title="Retirar da Watchlist"
-                            color="#4444FF"
-                            onPress={() => this.removerWatchlist()}
-                        />
+                        )}
+                        
                     </View>
 
                 </View>
@@ -149,7 +145,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: "bold",
         color: "white",
-        marginBottom: 10,
+        marginBottom: 10
     },
 
     overview: {
