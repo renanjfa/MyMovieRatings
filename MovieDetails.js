@@ -75,7 +75,7 @@ class MovieDetails extends Component {
 
                     <Text style={styles.detail}>⭐ Average Score: {filme.vote_average}</Text>
                     <Text style={styles.detail}>📅 Release Date: {filme.release_date}</Text>
-                    <Text style={styles.detail}>🎯 Your Rating: {this.state.rating || "Nenhuma"}</Text>
+                    <Text style={styles.detail}>🎯 Your Rating: {this.state.rating || "None"}</Text>
                 
 
                 

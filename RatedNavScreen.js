@@ -15,7 +15,7 @@ class RatedNavScreen extends Component {
 
                     <View style={styles.grid}>
 
-                        {filmes.map((filme, index) => (
+                        {filmes.toReversed().map((filme, index) => (
                             <TouchableOpacity 
                                 key={index} 
                                 style={styles.card}
@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#837718ff",
         paddingVertical: 4,
         paddingHorizontal: 8,
-        borderRadius: 2,
+        borderRadius: 40,
         elevation: 4,
     },
 
     ratingText: {
         color: "white",
         fontWeight: "bold",
-        fontSize: 14,
+        fontSize: 15,
     }
 });
