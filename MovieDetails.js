@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableOpacity, Button, StyleSheet} from 'react-native';
+import {Text, View, Image, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
 import StarButton from './StarButton';
 
+const {width, height} = Dimensions.get('window');
 class MovieDetails extends Component {
 
     state = {
-        rating: null
+        rating: null,
     }
 
     componentDidMount() {
@@ -18,6 +19,7 @@ class MovieDetails extends Component {
         this.setState({
             rating: nota
         })
+        
     }
 
     setRating = (nota) => {
@@ -64,6 +66,7 @@ class MovieDetails extends Component {
                     style={styles.poster}
                 />
 
+                
                 {/* Conteúdo */}
                 <View style={styles.infoContainer}>
 
@@ -73,10 +76,14 @@ class MovieDetails extends Component {
                     <Text style={styles.detail}>⭐ Average Score: {filme.vote_average}</Text>
                     <Text style={styles.detail}>📅 Release Date: {filme.release_date}</Text>
                     <Text style={styles.detail}>🎯 Your Rating: {this.state.rating || "Nenhuma"}</Text>
+                
+
+                
+
 
                     {/* Rating */}
                     <View style={styles.ratingRow}>
-                        <Text style={styles.ratingLabel}>Your Rating:</Text>
+                        <Text style={styles.ratingLabel}>Rate this movie:</Text>
 
                         {[1,2,3,4,5,6,7,8,9,10].map(num => (
                             <StarButton 
@@ -91,11 +98,12 @@ class MovieDetails extends Component {
                     <View style={styles.buttonsArea}>
 
                         {this.state.rating ? (
-                            <Button
-                                title="Excluir Avaliação"
-                                color="#FF4444"
+                            <TouchableOpacity 
+                                style={[styles.customButton, { backgroundColor: "#e93e17ff" }]}
                                 onPress={() => this.removerRatedMovie()}
-                            />
+                            >
+                                <Text style={styles.customButtonText}>Remove From Watchlist</Text>
+                            </TouchableOpacity>
                         ) : null}
 
                        
@@ -124,6 +132,9 @@ class MovieDetails extends Component {
     }
 
 }
+
+export default MovieDetails;
+
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
@@ -133,8 +144,8 @@ const styles = StyleSheet.create({
     },
 
     poster: {
-        width: 450,
-        height: 630,
+        width: width * 0.3,
+        height: height * 0.83,
         borderRadius: 12,
         marginRight: 16,
     },
@@ -145,7 +156,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 26,
+        fontSize: 52,
         fontWeight: "bold",
         color: "white",
         marginBottom: 10
@@ -158,7 +169,7 @@ const styles = StyleSheet.create({
     },
 
     detail: {
-        fontSize: 16,
+        fontSize: 18,
         color: "#AAAAAA",
         marginBottom: 6,
     },
@@ -167,13 +178,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",
-        marginTop: 10,
+        marginTop: 100,
         marginBottom: 20,
     },
 
     ratingLabel: {
         color: "white",
-        fontSize: 16,
+        fontSize: 18,
         marginRight: 10,
     },
 
@@ -183,9 +194,9 @@ const styles = StyleSheet.create({
     customButton: {
         paddingVertical: 12,
         paddingHorizontal: 16,
-        height: 40,
+        width: width * 0.3,
+        marginBottom: 10,
         borderRadius: 10,
-        marginTop: 10,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -196,6 +207,3 @@ const styles = StyleSheet.create({
         fontWeight: "600",
     },
 });
-
-
-export default MovieDetails;

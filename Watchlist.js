@@ -25,7 +25,7 @@ class Watchlist extends Component {
                     )} 
                 </Watch.Screen>
 
-                <Watch.Screen name="MovieDetails">
+                <Watch.Screen name="MovieDetails" options={{headerStyle: {backgroundColor: "#877d2fff", borderBottomColor: '#000000ff'},}}>
                     {(props) => (
                         <MovieDetails
                         {...props}

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StyleSheet} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StyleSheet, Dimensions} from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 const API_KEY = "0672663f6a6265905425d77f1c69a75f";
 
@@ -118,8 +120,8 @@ const styles = StyleSheet.create({
     input: {
         marginTop: 5,
         marginBottom: 10,
-        marginLeft: 70,
-        marginRight: 70,
+        marginLeft: width * 0.05,
+        marginRight: width * 0.05,
         padding: 10,
         backgroundColor: '#9b9250b7',
         borderRadius: 8,

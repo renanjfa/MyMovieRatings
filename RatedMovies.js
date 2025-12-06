@@ -25,7 +25,7 @@ class RatedMovies extends Component {
                     )}
                 </Ratings.Screen>
 
-                <Ratings.Screen name="MovieDetails" options={{ headerShown: false }}>
+                <Ratings.Screen name="MovieDetails" options={{headerStyle: {backgroundColor: "#877d2fff", borderBottomColor: '#000000ff'},}}>
                     {(props) => (
                         <MovieDetails
                         {...props}

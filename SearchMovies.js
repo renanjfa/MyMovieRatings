@@ -24,7 +24,7 @@ class SearchMovies extends Component {
                     )}
                 </Stack.Screen>
 
-                <Stack.Screen name="MovieDetails">
+                <Stack.Screen name="MovieDetails" options={{headerStyle: {backgroundColor: "#877d2fff", borderBottomColor: '#000000ff'},}}>
                     {(props) => (
                         <MovieDetails
                         {...props}
