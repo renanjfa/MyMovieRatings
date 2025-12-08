@@ -62,9 +62,6 @@ class MovieNavScreen extends Component {
         });
     };
 
-
-    
-
     render() {
         const { filmes, loading, busca } = this.state;
         const { navigation } = this.props;
@@ -97,7 +94,7 @@ class MovieNavScreen extends Component {
                                     />
                                 ) : (
                                     <View style={{ width: 150, height: 230, margin: 10 , alignItems: "center", justifyContent: "center", backgroundColor: "#7e7373ff", borderRadius: 8}}>
-                                        <Text style={{color:"white", fontWeight: "bold"}}>Sem Poster</Text>
+                                        <Text style={{color:"white", fontWeight: "bold"}}>No Poster Available</Text>
                                     </View>
                                 )}
                                 <Text numberOfLines={2} style={styles.title}>

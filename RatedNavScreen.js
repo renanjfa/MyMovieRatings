@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#837718ff",
         paddingVertical: 4,
         paddingHorizontal: 8,
-        borderRadius: 40,
+        borderRadius: 70,
         elevation: 4,
     },
 
     ratingText: {
         color: "white",
         fontWeight: "bold",
-        fontSize: 15,
+        fontSize: 16,
     }
 });

@@ -49,7 +49,7 @@ class MovieDetails extends Component {
 
     alreadyInWatchlist() {
         const { filme } = this.props.route.params;
-        const {watchlist} = this.props;
+        const { watchlist } = this.props;
         const f = watchlist.find(m => m.id === filme.id);
         return f ? true : false;
     }
@@ -77,10 +77,6 @@ class MovieDetails extends Component {
                     <Text style={styles.detail}>📅 Release Date: {filme.release_date}</Text>
                     <Text style={styles.detail}>🎯 Your Rating: {this.state.rating || "None"}</Text>
                 
-
-                
-
-
                     {/* Rating */}
                     <View style={styles.ratingRow}>
                         <Text style={styles.ratingLabel}>Rate this movie:</Text>
@@ -99,25 +95,24 @@ class MovieDetails extends Component {
 
                         {this.state.rating ? (
                             <TouchableOpacity 
-                                style={[styles.customButton, { backgroundColor: "#e93e17ff" }]}
+                                style={[styles.customButton, { backgroundColor: "#75461aff" }]}
                                 onPress={() => this.removerRatedMovie()}
                             >
-                                <Text style={styles.customButtonText}>Remove From Watchlist</Text>
+                                <Text style={styles.customButtonText}>Remove Rating</Text>
                             </TouchableOpacity>
                         ) : null}
 
-                       
 
                         {this.alreadyInWatchlist() ? (
                             <TouchableOpacity 
-                                style={[styles.customButton, { backgroundColor: "#4444FF" }]}
+                                style={[styles.customButton, { backgroundColor: "#2a8311ff" }]}
                                 onPress={() => this.removerWatchlist()}
                             >
                                 <Text style={styles.customButtonText}>Remove From Watchlist</Text>
                             </TouchableOpacity>
                         ) : (
                             <TouchableOpacity 
-                                style={[styles.customButton, { backgroundColor: "#5c5ceaff" }]}
+                                style={[styles.customButton, { backgroundColor: "#37b913ff" }]}
                                 onPress={() => this.addToWatchlist()}
                             >
                                 <Text style={styles.customButtonText}>Add To Watchlist</Text>
