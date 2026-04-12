@@ -72,10 +72,10 @@ npx run web
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/97923730-e41c-4eb4-8263-b7374f1911b8" width="220"/>
-  <img src="https://github.com/user-attachments/assets/8f9c27aa-a483-4a83-88af-d72983e3b556" width="220"/>
-  <img src="https://github.com/user-attachments/assets/33f33ac6-162c-4b87-990e-4723c3f21153" width="220"/>
-  <img src="https://github.com/user-attachments/assets/a75ccd89-4a0b-4df4-8492-82c5abd1d630" width="220"/>
+  <img src="https://github.com/user-attachments/assets/97923730-e41c-4eb4-8263-b7374f1911b8" width="200"/>
+  <img src="https://github.com/user-attachments/assets/8f9c27aa-a483-4a83-88af-d72983e3b556" width="200"/>
+  <img src="https://github.com/user-attachments/assets/33f33ac6-162c-4b87-990e-4723c3f21153" width="200"/>
+  <img src="https://github.com/user-attachments/assets/a75ccd89-4a0b-4df4-8492-82c5abd1d630" width="200"/>
 </p>
 
 <p align="center">
