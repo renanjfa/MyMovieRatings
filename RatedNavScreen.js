@@ -4,7 +4,7 @@ import {Text, Image, TouchableOpacity, ScrollView, View, StyleSheet} from 'react
 class RatedNavScreen extends Component {
 
     render() {
-        const filmes = this.props.ratedMovies;
+        const filmes = this.props.ratedMovies || [];
         const { navigation } = this.props;
 
         return (

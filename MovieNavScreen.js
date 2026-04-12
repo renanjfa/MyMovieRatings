@@ -43,7 +43,7 @@ class MovieNavScreen extends Component {
         this.setState({
             filmes: filmesTodos,
             loading: false
-            });
+        });
     };
 
     searchFilmes = async (title) => {
