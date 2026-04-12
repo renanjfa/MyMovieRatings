@@ -43,7 +43,7 @@ export default class App extends Component {
 
   isOnRateMovie = (movie, rating) => {
     const updated = [...this.state.ratedMovies.filter(m => m.id !== movie.id), { ...movie, rating } ];
-      this.setState({ ratedMovies: updated });w
+      this.setState({ ratedMovies: updated });
       this.saveRatedMovies(updated);
   };
 
